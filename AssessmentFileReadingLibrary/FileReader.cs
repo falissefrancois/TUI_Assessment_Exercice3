@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace FileReadingLibrary
 {
@@ -11,7 +12,7 @@ namespace FileReadingLibrary
     {
         private enum SupportedFileExtensions { txt, xml, json };
 
-        private static List<string> _adminRestrictedFiles = new List<string> {"SampleAdminXmlFile", "SampleAdminTextFile"};
+        private static List<string> _adminRestrictedFiles = new List<string> {"SampleAdminXmlFile", "SampleAdminTextFile", "SampleAdminJsonFile"};
         private static string _adminPassword = "12345password";
 
         public static string ReadFile(string filepath, bool isEncrypted=false, string userPassword=null)
@@ -51,7 +52,9 @@ namespace FileReadingLibrary
 
         private static string ReadJson(string text)
         {
-            throw new NotImplementedException();
+            var flights = JsonConvert.DeserializeObject<List<Flight>>(text);
+
+            return PrintFlights(flights);
         }
 
         private static string ReadXml(string text)
@@ -60,6 +63,11 @@ namespace FileReadingLibrary
             var serializer = new XmlSerializer(typeof(List<Flight>));
             var flights = serializer.Deserialize(reader) as List<Flight>;
 
+            return PrintFlights(flights);
+        }
+
+        private static string PrintFlights(IEnumerable<Flight> flights)
+        {
             var sb = new StringBuilder();
             foreach (var flightAndIndex in flights.Select((flight, index) => new { flight, index }))
             {
@@ -70,7 +78,7 @@ namespace FileReadingLibrary
             return sb.ToString();
         }
 
-        public static string Decrypt(string text)
+        private static string Decrypt(string text)
         {
             return FileEncrypterDecrypter.DecryptText(text);
         }
