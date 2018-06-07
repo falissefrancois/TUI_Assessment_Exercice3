@@ -8,11 +8,20 @@ namespace FileReaderClient
     {
         static void Main(string[] args)
         {
-            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "SampleTextFile.txt");
-            Console.WriteLine($"Reading file {Path.GetFileName(filepath)} :");
-            Console.WriteLine(TextFileReader.ReadFile(filepath));
+            var textfilepath = Path.Combine(Directory.GetCurrentDirectory(), "SampleTextFile.txt");
+            var xmlfilepath = Path.Combine(Directory.GetCurrentDirectory(), "SampleXmlFile.xml");
 
-            Console.WriteLine("\n\n\n\n\nPress any key to continue... ");
+            //TEXT
+            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine($"Reading file {Path.GetFileName(textfilepath)} :");
+            Console.WriteLine(FileReader.ReadFile(textfilepath));
+
+            //XML
+            Console.WriteLine("\n\n------------------------------------------------");
+            Console.WriteLine($"Reading file {Path.GetFileName(xmlfilepath)} :");
+            Console.WriteLine(FileReader.ReadFile(xmlfilepath));
+
+            Console.WriteLine("\n\n\nPress any key to continue... ");
             Console.ReadLine();
         }
     }
