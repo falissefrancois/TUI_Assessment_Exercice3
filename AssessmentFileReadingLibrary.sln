@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssessmentFileReadingLibrary", "AssessmentFileReadingLibrary\AssessmentFileReadingLibrary.csproj", "{9B63AA50-F960-4505-ACF8-C757B8D6BA55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileReadingLibrary", "AssessmentFileReadingLibrary\FileReadingLibrary.csproj", "{9B63AA50-F960-4505-ACF8-C757B8D6BA55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileReaderClient", "FileClient\FileReaderClient.csproj", "{80390D9D-E33C-48A8-8A62-144F55DCD1DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9B63AA50-F960-4505-ACF8-C757B8D6BA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B63AA50-F960-4505-ACF8-C757B8D6BA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B63AA50-F960-4505-ACF8-C757B8D6BA55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80390D9D-E33C-48A8-8A62-144F55DCD1DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80390D9D-E33C-48A8-8A62-144F55DCD1DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80390D9D-E33C-48A8-8A62-144F55DCD1DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80390D9D-E33C-48A8-8A62-144F55DCD1DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
