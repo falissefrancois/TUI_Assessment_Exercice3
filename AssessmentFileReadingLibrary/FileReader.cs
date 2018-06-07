@@ -41,7 +41,7 @@ namespace FileReadingLibrary
                 case SupportedFileExtensions.txt:
                     return text;
                 case SupportedFileExtensions.xml:
-                    return ReadXml(text);
+                    return ReadXml(text, isAdmin);
                 case SupportedFileExtensions.json:
                     return ReadJson(text);
                 default:
