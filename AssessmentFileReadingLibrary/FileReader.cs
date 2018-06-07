@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace FileReadingLibrary
 {
-    //A user should be able to read a text file
     public static class FileReader
     {
         private enum SupportedFileExtensions { txt, xml, json };
 
-        public static string ReadFile(string filepath)
+        public static string ReadFile(string filepath, bool isEncrypted=false)
         {
             SupportedFileExtensions fileExtension;
 
@@ -25,14 +25,16 @@ namespace FileReadingLibrary
                 throw new ArgumentException($"File Extension not supported : {Path.GetFileName(filepath)}");
             }
 
+            var text = isEncrypted ? Decrypt(File.ReadAllText(filepath)) : File.ReadAllText(filepath);
+
             switch (fileExtension)
             {
                 case SupportedFileExtensions.txt:
-                    return ReadTextFile(filepath);
+                    return text;
                 case SupportedFileExtensions.xml:
-                    return ReadXmlFile(filepath);
+                    return ReadXml(text);
                 case SupportedFileExtensions.json:
-                    return ReadJsonFile(filepath);
+                    return ReadJson(text);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -40,15 +42,15 @@ namespace FileReadingLibrary
             throw new ArgumentException("An unknown error occured");
         }
 
-        private static string ReadJsonFile(string filepath)
+        private static string ReadJson(string text)
         {
             throw new NotImplementedException();
         }
 
-        private static string ReadXmlFile(string filepath)
+        private static string ReadXml(string text)
         {
-            TextReader reader = new StreamReader(filepath);
-            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<Flight>));
+            TextReader reader = new StringReader(text);
+            var serializer = new XmlSerializer(typeof(List<Flight>));
             var flights = serializer.Deserialize(reader) as List<Flight>;
 
             var sb = new StringBuilder();
@@ -61,9 +63,9 @@ namespace FileReadingLibrary
             return sb.ToString();
         }
 
-        private static string ReadTextFile(string filepath)
+        public static string Decrypt(string text)
         {
-            return File.ReadAllText(filepath);
+            return FileEncrypterDecrypter.DecryptText(text);
         }
     }
 }
