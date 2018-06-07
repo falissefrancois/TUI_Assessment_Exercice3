@@ -12,6 +12,7 @@ namespace FileReaderClient
             var xmlfilepath = Path.Combine(Directory.GetCurrentDirectory(), "SampleXmlFile.xml");
             var encryptedfilepath = Path.Combine(Directory.GetCurrentDirectory(), "SampleEncryptedTextFile.txt");
             var adminxmlfilepath = Path.Combine(Directory.GetCurrentDirectory(), "SampleAdminXmlFile.xml");
+            var encryptedxmlfilepath = Path.Combine(Directory.GetCurrentDirectory(), "SampleEncryptedXmlFile.xml");
 
             //TEXT
             Console.WriteLine("------------------------------------------------");
@@ -38,8 +39,16 @@ namespace FileReaderClient
             Console.WriteLine($"Reading file {Path.GetFileName(adminxmlfilepath)} as USER :");
             Console.WriteLine(FileReader.ReadFile(adminxmlfilepath, userPassword: "wrongPassword"));
 
+            //ENCRYPTED XML
+            Console.WriteLine("\n\n------------------------------------------------");
+            Console.WriteLine($"Reading file {Path.GetFileName(encryptedxmlfilepath)} :");
+            Console.WriteLine(FileReader.ReadFile(encryptedxmlfilepath, true));
+
             Console.WriteLine("\n\n\nPress any key to continue... ");
             Console.ReadLine();
+
+            //var temp = FileReader.Decrypt(File.ReadAllText(xmlfilepath));
+            //File.WriteAllText(encryptedxmlfilepath, temp);
         }
     }
 }

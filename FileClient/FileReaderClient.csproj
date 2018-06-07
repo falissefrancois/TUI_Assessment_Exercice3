@@ -16,6 +16,9 @@
     <None Update="SampleEncryptedTextFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SampleEncryptedXmlFile.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SampleTextFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
