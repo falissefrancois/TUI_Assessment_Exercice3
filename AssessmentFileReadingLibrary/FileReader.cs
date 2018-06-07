@@ -11,7 +11,7 @@ namespace FileReadingLibrary
     {
         private enum SupportedFileExtensions { txt, xml, json };
 
-        private static List<string> _adminRestrictedFiles = new List<string> {"SampleAdminXmlFile"};
+        private static List<string> _adminRestrictedFiles = new List<string> {"SampleAdminXmlFile", "SampleAdminTextFile"};
         private static string _adminPassword = "12345password";
 
         public static string ReadFile(string filepath, bool isEncrypted=false, string userPassword=null)

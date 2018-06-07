@@ -13,6 +13,7 @@ namespace FileReaderClient
             var encryptedfilepath = Path.Combine(Directory.GetCurrentDirectory(), "SampleEncryptedTextFile.txt");
             var adminxmlfilepath = Path.Combine(Directory.GetCurrentDirectory(), "SampleAdminXmlFile.xml");
             var encryptedxmlfilepath = Path.Combine(Directory.GetCurrentDirectory(), "SampleEncryptedXmlFile.xml");
+            var admintextfilepath = Path.Combine(Directory.GetCurrentDirectory(), "SampleAdminTextFile.txt");
 
             //TEXT
             Console.WriteLine("------------------------------------------------");
@@ -34,7 +35,7 @@ namespace FileReaderClient
             Console.WriteLine($"Reading file {Path.GetFileName(adminxmlfilepath)} as ADMIN :");
             Console.WriteLine(FileReader.ReadFile(adminxmlfilepath, userPassword:"12345password"));
 
-            //ADMINXML not as ADMIN
+            //ADMINXML as USER
             Console.WriteLine("\n\n------------------------------------------------");
             Console.WriteLine($"Reading file {Path.GetFileName(adminxmlfilepath)} as USER :");
             Console.WriteLine(FileReader.ReadFile(adminxmlfilepath, userPassword: "wrongPassword"));
@@ -44,11 +45,18 @@ namespace FileReaderClient
             Console.WriteLine($"Reading file {Path.GetFileName(encryptedxmlfilepath)} :");
             Console.WriteLine(FileReader.ReadFile(encryptedxmlfilepath, true));
 
+            //ADMIN TEXT as ADMIN
+            Console.WriteLine("\n\n------------------------------------------------");
+            Console.WriteLine($"Reading file {Path.GetFileName(admintextfilepath)} as ADMIN:");
+            Console.WriteLine(FileReader.ReadFile(admintextfilepath, userPassword:"12345password"));
+
+            //ADMIN TEXT as USER
+            Console.WriteLine("\n\n------------------------------------------------");
+            Console.WriteLine($"Reading file {Path.GetFileName(admintextfilepath)} as USER:");
+            Console.WriteLine(FileReader.ReadFile(admintextfilepath, userPassword: "wrongPassword"));
+
             Console.WriteLine("\n\n\nPress any key to continue... ");
             Console.ReadLine();
-
-            //var temp = FileReader.Decrypt(File.ReadAllText(xmlfilepath));
-            //File.WriteAllText(encryptedxmlfilepath, temp);
         }
     }
 }
