@@ -10,6 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="SampleAdminXmlFile.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SampleEncryptedTextFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

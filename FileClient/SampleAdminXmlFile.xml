@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfFlight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Flight>
+    <Departure>Paris</Departure>
+    <Destination>New York</Destination>
+    <FuelRequired>540.6</FuelRequired>
+  </Flight>
+  <Flight>
+    <Departure>Berlin</Departure>
+    <Destination>Amsterdam</Destination>
+    <FuelRequired>259.9</FuelRequired>
+  </Flight>
+  <Flight>
+    <Departure>London</Departure>
+    <Destination>Brussels</Destination>
+    <FuelRequired>59.5</FuelRequired>
+  </Flight>
+  <Flight>
+    <Departure>Oslo</Departure>
+    <Destination>Copenhagen</Destination>
+    <FuelRequired>241</FuelRequired>
+  </Flight>
+  <Flight>
+    <Departure>Vancouver</Departure>
+    <Destination>Seattle</Destination>
+    <FuelRequired>320</FuelRequired>
+  </Flight>
+</ArrayOfFlight>

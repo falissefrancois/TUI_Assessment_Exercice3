@@ -11,7 +11,10 @@ namespace FileReadingLibrary
     {
         private enum SupportedFileExtensions { txt, xml, json };
 
-        public static string ReadFile(string filepath, bool isEncrypted=false)
+        private static List<string> _adminRestrictedFiles = new List<string> {"SampleAdminXmlFile"};
+        private static string _adminPassword = "12345password";
+
+        public static string ReadFile(string filepath, bool isEncrypted=false, string userPassword=null)
         {
             SupportedFileExtensions fileExtension;
 
@@ -25,21 +28,25 @@ namespace FileReadingLibrary
                 throw new ArgumentException($"File Extension not supported : {Path.GetFileName(filepath)}");
             }
 
+            //Encryption
             var text = isEncrypted ? Decrypt(File.ReadAllText(filepath)) : File.ReadAllText(filepath);
+
+            //Access Rights
+            var isAdmin = !string.IsNullOrWhiteSpace(userPassword) && userPassword == _adminPassword;
+            if (_adminRestrictedFiles.Contains(Path.GetFileNameWithoutExtension(filepath)) && !isAdmin)
+                return "Insufficient permissions";
 
             switch (fileExtension)
             {
                 case SupportedFileExtensions.txt:
                     return text;
                 case SupportedFileExtensions.xml:
-                    return ReadXml(text);
+                    return ReadXml(text, isAdmin);
                 case SupportedFileExtensions.json:
                     return ReadJson(text);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
-            throw new ArgumentException("An unknown error occured");
         }
 
         private static string ReadJson(string text)
